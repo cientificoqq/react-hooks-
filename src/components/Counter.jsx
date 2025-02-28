@@ -13,10 +13,10 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 const Counter = () => {
   const [item, setItem] = useState(0);
-  function ink(prev) {
+  function ink() {
     setItem((prev) => prev + 1);
   }
-  function dek(prev) {
+  function dek() {
     if (item > 0) {
       setItem((prev) => prev - 1);
     } else {
@@ -70,7 +70,7 @@ const Counter = () => {
           >
             Add
           </Button>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="h6" color="text.secondary">
             {item}
           </Typography>
         </CardActions>
