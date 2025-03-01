@@ -17,6 +17,14 @@ const Header = ({ darkMode, setDarkMode }) => {
               To Do List
             </Button>
           </Link>
+          <Link
+            to="/calculator"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Button variant="text" color="inherit">
+              Сalculator
+            </Button>
+          </Link>
           <IconButton onClick={() => setDarkMode(!darkMode)} color="inherit">
             {darkMode ? <DarkMode /> : <LightMode />}
           </IconButton>
