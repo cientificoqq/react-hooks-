@@ -1,4 +1,5 @@
 import { Box, Button, Grid2, TextField, Typography } from "@mui/material";
+
 import { useState } from "react";
 
 const styles = {
@@ -7,15 +8,18 @@ const styles = {
     margin: "50px auto",
     padding: "20px",
     borderRadius: "12px",
-
+    border: "2px solid red",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   display: {
     marginBottom: "10px",
     "& input": {
       textAlign: "right",
-      fontSize: "24px",
+      fontSize: "30px",
     },
   },
   button: {
@@ -37,12 +41,10 @@ const styles = {
 
 const Calculator = () => {
   const [number, setNumber] = useState("");
-  const [input, setInput] = useState([]);
 
   function handleClick(value) {
     if (value === "C") {
       setNumber("");
-      setInput([]);
     } else if (value === "=") {
       try {
         setNumber(eval(number).toString());
