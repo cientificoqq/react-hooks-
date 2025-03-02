@@ -53,6 +53,14 @@ const Header = ({ darkMode, setDarkMode }) => {
               stopwatch
             </Button>
           </Link>
+          <Link
+            to="/filter"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Button variant="text" color="inherit">
+              filter
+            </Button>
+          </Link>
           <IconButton onClick={() => setDarkMode(!darkMode)} color="inherit">
             {darkMode ? <DarkMode /> : <LightMode />}
           </IconButton>

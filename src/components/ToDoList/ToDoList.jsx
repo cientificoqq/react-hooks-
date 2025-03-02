@@ -6,6 +6,7 @@ const ToDoList = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [items, setItems] = useState([]);
+  const [search, setSearch] = useState("");
 
   function eventTitle(event) {
     setTitle(event.target.value);
@@ -27,9 +28,25 @@ const ToDoList = () => {
     setItems((prevItems) => prevItems.filter((_, i) => i !== index));
   }
 
+  const filteredItems = items.filter(
+    (item) =>
+      item.title.toLowerCase().includes(search.toLowerCase()) ||
+      item.description.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <Container maxWidth="lg" sx={{ mt: "20px" }}>
       <Typography variant="h4">To Do List</Typography>
+
+      <TextField
+        label="Search"
+        variant="outlined"
+        fullWidth
+        sx={{ mb: "15px" }}
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
+
       <TextField
         label="Title"
         variant="outlined"
@@ -37,6 +54,7 @@ const ToDoList = () => {
         value={title}
         onChange={eventTitle}
       />
+
       <TextField
         label="Description"
         variant="outlined"
@@ -45,24 +63,25 @@ const ToDoList = () => {
         value={description}
         onChange={eventDescription}
       />
+
       <Button onClick={AddToList} sx={{ mt: "15px" }}>
         Add
       </Button>
-      {items.length ? (
-        <div></div>
-      ) : (
-        <Typography variant="h4" sx={{ textAlign: "center" }}>
-          Empty
+
+      {filteredItems.length === 0 ? (
+        <Typography variant="h5" sx={{ textAlign: "center", mt: "20px" }}>
+          No items match your search.
         </Typography>
+      ) : (
+        filteredItems.map((item, index) => (
+          <ToDoListItem
+            key={index}
+            title={item.title}
+            description={item.description}
+            onRemove={() => onRemove(index)}
+          />
+        ))
       )}
-      {items.map((item, index) => (
-        <ToDoListItem
-          key={index}
-          title={item.title}
-          description={item.description}
-          onRemove={() => onRemove(index)}
-        />
-      ))}
     </Container>
   );
 };
