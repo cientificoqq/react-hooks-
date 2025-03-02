@@ -45,6 +45,14 @@ const Header = ({ darkMode, setDarkMode }) => {
               Сalculator
             </Button>
           </Link>
+          <Link
+            to="/stopwatch"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
+            <Button variant="text" color="inherit">
+              stopwatch
+            </Button>
+          </Link>
           <IconButton onClick={() => setDarkMode(!darkMode)} color="inherit">
             {darkMode ? <DarkMode /> : <LightMode />}
           </IconButton>
