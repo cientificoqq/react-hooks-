@@ -1,6 +1,6 @@
 import { Box, Button, Grid2, TextField, Typography } from "@mui/material";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const styles = {
   container: {
@@ -42,12 +42,15 @@ const styles = {
 const Calculator = () => {
   const [number, setNumber] = useState("");
 
+  const [prev, setPrev] = useState("");
+
   function handleClick(value) {
     if (value === "C") {
       setNumber("");
     } else if (value === "=") {
       try {
-        setNumber(eval(number).toString());
+        setPrev(eval(number));
+        setNumber(eval(number));
       } catch {
         setNumber("Error");
       }
@@ -58,8 +61,8 @@ const Calculator = () => {
 
   return (
     <Box sx={styles.container}>
-      <Typography variant="h5" gutterBottom>
-        Calculator
+      <Typography variant="h5" gutterBottom sx={{ color: "lightgray" }}>
+        {prev}
       </Typography>
       <TextField
         variant="outlined"

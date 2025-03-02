@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardActions,
@@ -13,6 +13,16 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 const Counter = () => {
   const [item, setItem] = useState(0);
+  const [title, setTitile] = useState("");
+
+  useEffect(() => {
+    if (item % 2 === 0) {
+      setTitile("Even bananas");
+    } else {
+      setTitile("Odd bananas");
+    }
+  }, [item]);
+
   function ink() {
     setItem((prev) => prev + 1);
   }
@@ -40,7 +50,7 @@ const Counter = () => {
         <CardMedia component="img" height="300" image="/1585225128_63618.jpg" />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Banana
+            {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Banana is a sweet and nutritious tropical fruit, rich in vitamins
